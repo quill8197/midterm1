@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Midterm Survey</title>
+</head>
+<body>
+    <h1>Midterm Survey</h1>
+    <form>
+        <label>Name:
+            <input type="text" id="name">
+        </label>
+
+        <p>Check all that apply</p>
+        <repeat group="{{ @options }}" value="{{ @option }}">
+            <label><input type="checkbox" name="opt[]" value="{{ @option }}"
+                <check if="{{ !empty(@opt) && in_array(@option, @opt) }}">
+                    checked="checked"
+                </check>
+                >{{ @option }}
+            </label><br>
+        </repeat>
+    </form>
+
+</body>
+</html>
