@@ -3,26 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Midterm Survey</title>
+
+    <style>
+        .err
+        {
+            color: darkred;
+        }
+    </style>
 </head>
 <body>
     <h1>Midterm Survey</h1>
     <form method="post" action="#">
-        <label>Name:
-            <input type="text" id="name">
+        <label>Name
+            <input type="text" name="name" value="{{ @name }}">
         </label>
+        <check if="{{ @errors['name'] }}">
+            <span class="err">{{ @errors['name'] }}</span>
+        </check>
 
-        <p>Check all that apply</p>
-        <repeat group="{{ @options }}" value="{{ @option }}">
-            <label><input type="checkbox" name="opt[]" value="{{ @option }}"
-                <check if="{{ !empty(@opt) && in_array(@option, @opt) }}">
-                    checked="checked"
-                </check>
-                >{{ @option }}
-            </label><br>
-        </repeat>
+        <p>Select an option:
+            <check if="{{ @errors['mid'] }}">
+                <span class="err">{{ @errors['mid'] }}</span>
+            </check><br>
 
-        <input type="submit" value="Submit">
+            <repeat group="{{ @midtermOptions }}" value="{{ @midOption }}">
+                <label><input type="checkbox" name="mid[]" value="{{ @midOption }}"
+                    <check if="{{ !empty(@mid) && in_array(@midOption, @mid) }}">
+                        checked="checked"
+                    </check>
+                    >{{ @midOption }}
+                </label><br>
+            </repeat>
+        </p>
+
+        <input type="submit" value="Place Order">
     </form>
 
+    <div id="output"></div>
 </body>
 </html>
