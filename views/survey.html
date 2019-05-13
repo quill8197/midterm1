@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Midterm Survey</h1>
-    <form>
+    <form method="post" action="#">
         <label>Name:
             <input type="text" id="name">
         </label>
@@ -20,6 +20,8 @@
                 >{{ @option }}
             </label><br>
         </repeat>
+
+        <input type="submit" value="Submit">
     </form>
 
 </body>

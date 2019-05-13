@@ -22,7 +22,7 @@ $f3->route('GET /', function()
 });
 
 //Define a survey route
-$f3->route('GET /survey', function()
+$f3->route('GET|POST /survey', function()
 {
     $view = new Template();
     echo $view->render('views/survey.html');
